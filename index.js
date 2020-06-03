@@ -40,7 +40,8 @@ app.get("/top-post", async (req, res) => {
             )
     );
 
-    res.send(topPost)
+    res.header("Content-Type",'application/json');
+    res.send(JSON.stringify(topPost, null, 4));
 });
 
 app.get("/comment-search", async (req, res) => {
@@ -59,7 +60,8 @@ app.get("/comment-search", async (req, res) => {
         contains(c.body, searchText)
     );
 
-    res.send(filteredComments)
+    res.header("Content-Type",'application/json');
+    res.send(JSON.stringify(filteredComments, null, 4));
 });
 
 contains = function(str, serachText){
